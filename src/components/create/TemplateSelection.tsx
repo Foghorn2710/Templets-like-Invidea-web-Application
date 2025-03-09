@@ -3,7 +3,7 @@ import { Sparkles } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import VideoTemplate from '@/components/VideoTemplate';
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
 // Template data type
 export interface Template {
@@ -30,14 +30,14 @@ const TemplateSelection = ({
   setSelectedTemplate,
   onContinue
 }: TemplateSelectionProps) => {
-  const { toast } = useToast();
 
   const handleSelectTemplate = (id: string) => {
     setSelectedTemplate(id);
-    toast({
-      title: "Template Selected",
-      description: `You've selected: ${templates.find(t => t.id === id)?.title}`,
-      duration: 5000, // Set duration to 5 seconds
+    const selectedTemplateName = templates.find(t => t.id === id)?.title;
+    
+    toast.success(`Template Selected: ${selectedTemplateName}`, {
+      duration: 5000,
+      position: "top-center",
     });
   };
 

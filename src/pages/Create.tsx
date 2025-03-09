@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Toaster } from "@/components/ui/sonner";
 import Navbar from '@/components/Navbar';
 import CreateHeader from '@/components/create/CreateHeader';
 import TemplateSelection from '@/components/create/TemplateSelection';
@@ -81,6 +82,7 @@ const Create = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+      <Toaster />
       
       <main className="flex-grow pt-24 pb-16">
         <div className="container mx-auto px-6">
