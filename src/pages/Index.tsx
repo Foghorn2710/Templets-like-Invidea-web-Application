@@ -7,9 +7,10 @@ import {
   MessageSquare, 
   VideoIcon, 
   Paintbrush, 
-  MagicWand, 
+  Wand2, 
   ArrowRight,
-  CheckCircle
+  CheckCircle,
+  Play
 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import Navbar from '@/components/Navbar';
@@ -78,7 +79,7 @@ const Index = () => {
                 index={4}
               />
               <FeatureCard
-                icon={<MagicWand size={24} />}
+                icon={<Wand2 size={24} />}
                 title="Scene Intelligence"
                 description="AI automatically suggests the best transitions and effects between scenes."
                 index={5}
