@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 import Navbar from '@/components/Navbar';
 import VideoTemplate from '@/components/VideoTemplate';
 import TextToSpeech from '@/components/TextToSpeech';
@@ -72,6 +73,7 @@ const Create = () => {
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
   const [projectTitle, setProjectTitle] = useState('Untitled Project');
   const [isLoaded, setIsLoaded] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     setIsLoaded(true);
@@ -79,6 +81,10 @@ const Create = () => {
 
   const handleSelectTemplate = (id: string) => {
     setSelectedTemplate(id);
+    toast({
+      title: "Template Selected",
+      description: `You've selected: ${templates.find(t => t.id === id)?.title}`,
+    });
   };
 
   return (
@@ -146,7 +152,7 @@ const Create = () => {
                           key={template.id}
                           {...template}
                           index={index}
-                          onClick={handleSelectTemplate}
+                          onClick={() => handleSelectTemplate(template.id)}
                           isSelected={template.id === selectedTemplate}
                         />
                       ))}
