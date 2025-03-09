@@ -84,6 +84,7 @@ const Create = () => {
     toast({
       title: "Template Selected",
       description: `You've selected: ${templates.find(t => t.id === id)?.title}`,
+      duration: 5000, // Set duration to 5 seconds
     });
   };
 
