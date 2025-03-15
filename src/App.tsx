@@ -8,13 +8,32 @@ import Index from "./pages/Index";
 import Create from "./pages/Create";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <ToasterUI />
-      <Toaster />
+      <Toaster 
+        position="top-center"
+        expand={true}
+        richColors
+        closeButton
+        duration={5000}
+        visibleToasts={3}
+        toastOptions={{
+          style: { 
+            fontSize: '14px',
+          },
+        }}
+      />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
