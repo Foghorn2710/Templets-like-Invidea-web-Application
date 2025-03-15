@@ -15,6 +15,16 @@ export interface Template {
   duration: string;
   isNew?: boolean;
   isPremium?: boolean;
+  content?: {
+    title?: string;
+    description?: string;
+    scenes?: Array<{
+      id: string;
+      text?: string;
+      imageUrl?: string;
+      duration?: number;
+    }>;
+  };
 }
 
 interface TemplateSelectionProps {
